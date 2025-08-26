@@ -1,19 +1,17 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     loader = {
-       grub.enable = false;
-       generic-extlinux-compatible.enable = true;
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
     };
 
     initrd = {
-       availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
-       kernelModules = [ ];
+      availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
+      kernelModules = [ ];
     };
 
     extraModulePackages = [ ];
@@ -29,7 +27,7 @@
       device = "/dev/disk/by-label/NIXOS_SD";
       fsType = "ext4";
       options = [ "noatime" ];
-     };
+    };
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";

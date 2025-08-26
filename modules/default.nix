@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./monitoring/prometheus.nix
-  ];
-}
+{ imports = [ ./monitoring/prometheus.nix ]; }

@@ -1,11 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/default.nix
-    ];
+  imports = [ ./hardware-configuration.nix ../../modules/default.nix ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -16,9 +12,7 @@
   time.timeZone = "Europe/Lisbon";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    useXkbConfig = true;
-  };
+  console = { useXkbConfig = true; };
 
   users.users.king = {
     isNormalUser = true;
@@ -27,7 +21,6 @@
     #   tree
     # ];
   };
-
 
   environment.systemPackages = with pkgs; [
     vim
