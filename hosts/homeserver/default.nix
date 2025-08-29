@@ -1,7 +1,9 @@
-{ pkgs, ... }:
-
 {
-  imports = [ ./hardware-configuration.nix ../../modules/default.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./tools/default.nix
+    ../../modules/default.nix
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -22,18 +24,8 @@
     # ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    eza
-    bat
-    fastfetch
-    raspberrypi-eeprom
-  ];
-
   services.xserver.xkb.layout = "pt";
   services.openssh.enable = true;
 
   system.stateVersion = "25.11"; # Did you read the comment? No.
 }
-
