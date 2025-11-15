@@ -10,10 +10,11 @@
     };
   };
 
-  outputs = { nixpkgs, nixvim, ... }: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.homeserver = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      modules = [ ./hosts/homeserver/default.nix nixvim.nixosModules.nixvim ];
+      specialArgs = { inherit inputs; };
+      modules = [ ./hosts/homeserver/default.nix ];
     };
   };
 }
