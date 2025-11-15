@@ -10,6 +10,7 @@
     lazygit
     eza
     bat
+    htop
 
     # Nix stuff
     nixd
