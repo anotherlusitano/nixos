@@ -6,10 +6,11 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "homeserver";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 9090 ];
+  networking.firewall.allowedTCPPorts = [ 9090 80 443 25565 ];
 
   time.timeZone = "Europe/Lisbon";
 
@@ -18,7 +19,7 @@
 
   users.users.king = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "minecraft" ];
     # packages = with pkgs; [
     #   tree
     # ];

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+# If first argument not provided, will ask for the name of the server
+if [ -z "$1" ]; then
+    read -p 'Name of the server: ' server_name
+else
+    server_name="$1"
+fi
+
+echo "Starting $server_name ..."
+
+sudo systemctl start minecraft-server-$server_name.service
+
+echo "$server_name is running :)"

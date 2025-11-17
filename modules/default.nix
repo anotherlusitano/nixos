@@ -1,1 +1,1 @@
-{ imports = [ ./monitoring/prometheus.nix ]; }
+{ imports = [ ./monitoring/prometheus.nix ./minecraft/minecraft-server.nix ]; }

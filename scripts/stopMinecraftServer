@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+
+# If first argument not provided, will ask for the name of the server
+if [ -z "$1" ]; then
+    read -p 'Name of the server: ' server_name
+else
+    server_name="$1"
+fi
+
+# If second argument not provided, will ask for the password of the server
+if [ -z "$2" ]; then
+    read -p 'Password of the server: ' server_password
+else
+    server_password="$2"
+fi
+
+echo "Saving $server_name's world..."
+
+mcrcon -p ${server_password} save-all stop
+
+echo "Stop service..."
+
+sudo systemctl stop minecraft-server-${server_name}.service
+
+echo "All done. :-)"

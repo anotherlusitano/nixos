@@ -20,5 +20,6 @@
     # Funny stuff
     fastfetch
     raspberrypi-eeprom
+    mcrcon
   ];
 }
